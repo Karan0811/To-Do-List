@@ -8,12 +8,12 @@ dotenv.config();
 app.use("/static",express.static("public"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-
+const port=process.env.PORT ||3000
 //connection to db
 mongoose.set("useFindAndModify", false);
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
 console.log("Connected to db!");
-app.listen(3000, () => console.log("Server Up and running"));
+app.listen(port, () => console.log("Server Up and running"));
 });
 // app.get('/',(req, res) => {
 //     res.render('todo.ejs');
