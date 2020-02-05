@@ -8,10 +8,14 @@ dotenv.config();
 app.use("/static",express.static("public"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-const port=process.env.PORT ||3000
+let port=process.env.PORT;
+if(port==null||port==""){
+    port=3000;
+}
+// const port=process.env.PORT ||3000
 //connection to db
 mongoose.set("useFindAndModify", false);
-mongoose.connect(mongodb+srv://todoApplist:Pamnanichotu!8@todoapp-bbr3a.mongodb.net/test?retryWrites=true&w=majority, { useNewUrlParser: true }, () => {
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
 console.log("Connected to db!");
 app.listen(port, () => console.log("Server Up and running"));
 });
