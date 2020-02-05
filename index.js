@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 const port=process.env.PORT ||3000
 //connection to db
 mongoose.set("useFindAndModify", false);
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
+mongoose.connect(mongodb+srv://todoApplist:Pamnanichotu!8@todoapp-bbr3a.mongodb.net/test?retryWrites=true&w=majority, { useNewUrlParser: true }, () => {
 console.log("Connected to db!");
 app.listen(port, () => console.log("Server Up and running"));
 });
